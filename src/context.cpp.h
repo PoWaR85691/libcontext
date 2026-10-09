@@ -22,7 +22,7 @@ struct DefaultConstructor
 };
 
 template<typename T>
-struct DefaultConstructor<T, std::void_t<decltype(T{})>>
+struct DefaultConstructor<T, std::enable_if_t<std::is_default_constructible_v<T>>>
 {
     static constexpr bool exists = true;
 
